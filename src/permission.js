@@ -10,7 +10,7 @@ NProgress.configure({ showSpinner: false })// NProgress Configuration
 const whiteList = ['/login']// no redirect whitelist
 
 router.beforeEach((to, from, next) => {
-  NProgress.start() // start progress bar
+  // NProgress.start() // start progress bar
   if (getToken()) { // determine if there has token
     /* has token*/
     if (to.path === '/login') {
@@ -34,6 +34,11 @@ router.beforeEach((to, from, next) => {
       } else {
         next()
       }
+    }
+    if (to.path === '/example/editRole') {
+      store.dispatch('RoleList').then(res => {
+        console.log('Getting role list...' + res.data.list)
+      })
     }
   } else {
     /* has no token*/
