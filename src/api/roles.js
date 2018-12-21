@@ -51,3 +51,9 @@ export function permissionList() {
     method: 'get'
   })
 }
+export function allowUser() {
+  return request({
+    url: '/user/non/password',
+    method: 'get'
+  })
+}

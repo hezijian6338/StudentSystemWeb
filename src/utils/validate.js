@@ -1,9 +1,14 @@
 /**
  * Created by jiachenpan on 16/11/18.
  */
+import { allowUser } from '@/api/roles'
 
 export function isvalidUsername(str) {
-  const valid_map = ['admin', 'editor']
+  var valid_map = []
+  allowUser().then(response => {
+    valid_map = response.data.list
+  })
+  // const valid_map = ['admin', 'editor']
   return valid_map.indexOf(str.trim()) >= 0
 }
 
