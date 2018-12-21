@@ -5,20 +5,23 @@
       :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
       style="width: 50%"
     >
-      <el-table-column label="UserName" prop="username"/>
-      <el-table-column label="Roles">
+      <el-input
+        v-model="search"
+        size="mini"
+        placeholder="输入关键字搜索"/>
+      <el-table-column label="rolename" prop="name"/>
+      <el-table-column label="permissions">
         <template slot-scope="scope">
           <el-select
-            v-model="scope.row.roles"
+            v-model="scope.row.permissions"
             value-key="id"
             multiple
-            collapse-tags
             size="medium"
             style="margin-left: 20px;"
-            placeholder="请选择"
+            placeholder="请赋予权限..."
             @change="findSelected">
             <el-option
-              v-for="(key) in roles_list"
+              v-for="(key) in permissions_list"
               :key="key.id"
               :label="key.name"
               :value="key">
@@ -29,12 +32,16 @@
         </template>
       </el-table-column>
       <el-table-column align="right">
-        <template slot="header" slot-scope="scope">
-          <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
+        <template slot-scope="scope" slot="header">
+          <!-- <el-input
+            v-model="search"
+            size="mini"
+            placeholder="输入关键字搜索"/> -->
+          {{ loading }}
         </template>
         <template slot-scope="scope">
           <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">Confirm</el-button>
-          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row.roles)">Delete</el-button>
+          <!-- <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row.roles)">Delete</el-button> -->
         </template>
       </el-table-column>
     </el-table>
@@ -42,45 +49,47 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import { editRole } from '@/api/roles'
+import { permissionRole, editPermission } from '@/api/roles'
 
 export default {
   data() {
     return {
       loading: true,
+      button_loading: false,
       tableData: [
         {
-          id: 51,
-          password: 'admin',
-          roles: [
+          id: 1,
+          name: 'ROLE_ADMIN',
+          permissions: [
             {
-              id: '1',
-              name: 'ROLE_ADMIN'
+              description: '所有权限',
+              id: 3,
+              name: 'ROLE_ALL'
             }
-          ],
-          username: 'admin'
+          ]
         }
       ],
       backData: {
-        id: 0,
-        password: '',
-        roles: [
+        id: 1,
+        name: '',
+        permissions: [
           {
-            id: 0,
+            description: '',
+            id: 1,
             name: ''
           }
-        ],
-        username: ''
+        ]
       },
       search: '',
-      roles: [{
-        id: '1',
-        name: 'ROLE_ADMIN'
+      permissions: [{
+        description: '所有权限',
+        id: 3,
+        name: 'ROLE_ALL'
       }]
     }
   },
   computed: {
-    ...mapGetters(['roles_list'])
+    ...mapGetters(['permissions_list'])
   },
   mounted() {
     this.loadData()
@@ -91,21 +100,21 @@ export default {
     },
     handleEdit(index, row) {
       this.loading = true
-      console.log(this.tableData[index].roles)
+      console.log(this.tableData[index].permissions)
       var _this = this.backData
       _this = this.tableData[index]
       console.log('准备要发送的信息:' + _this.id)
       JSON.stringify(_this)
-      editRole(_this).then(response => {
-        this.loading = false
+      editPermission(_this).then(response => {
         console.log(response.code)
         if (response.code === 200) {
+          this.loading = false
           this.$message({
-            message: '成功修改' + response.message + '用户的角色!',
+            message: '成功修改' + response.message + '角色的权限!',
             type: 'success'
           })
         } else {
-          this.$message.error('修改用户角色错误,请联系管理员...')
+          this.$message.error('修改角色权限错误,请联系管理员...')
         }
       })
     },
@@ -113,15 +122,11 @@ export default {
       console.log(index, row)
     },
     loadData() {
-      this.$store
-        .dispatch('UsersRole')
-        .then(response => {
-          var d = response.data.list
-          this.tableData = d
-          this.loading = false
-          console.log('UserRole' + this.tableData)
-        })
-        .catch(() => {})
+      permissionRole().then(response => {
+        this.loading = false
+        console.log(response.data.list)
+        this.tableData = response.data.list
+      })
     }
   }
 }

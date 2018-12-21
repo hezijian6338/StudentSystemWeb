@@ -32,3 +32,22 @@ export function editRole(user) {
     data: user
   })
 }
+export function permissionRole() {
+  return request({
+    url: '/permission/role',
+    method: 'get'
+  })
+}
+export function editPermission(role) {
+  return request({
+    url: '/permission/role',
+    method: 'post',
+    data: role
+  })
+}
+export function permissionList() {
+  return request({
+    url: '/permission',
+    method: 'get'
+  })
+}

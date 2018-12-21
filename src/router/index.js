@@ -59,6 +59,12 @@ export const asyncRouterMap = [
         meta: { title: 'editRole', icon: 'table' }
       },
       {
+        path: 'editPermission',
+        name: 'EditPermission',
+        component: () => import('@/views/table/editPermission'),
+        meta: { title: 'editPermission', icon: 'table' }
+      },
+      {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),

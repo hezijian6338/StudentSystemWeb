@@ -35,9 +35,14 @@ router.beforeEach((to, from, next) => {
         next()
       }
     }
-    if (to.path === '/example/editRole') {
+    if (to.path === '/example/editRole' & store.getters.roles_list.length === 0) {
       store.dispatch('RoleList').then(res => {
         console.log('Getting role list...' + res.data.list)
+      })
+    }
+    if (to.path === '/example/editPermission' & store.getters.permissions_list.length === 0) {
+      store.dispatch('PermissionList').then(res => {
+        console.log('Getting permission list...' + res.data.list)
       })
     }
   } else {
