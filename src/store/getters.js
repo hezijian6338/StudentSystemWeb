@@ -1,3 +1,4 @@
+
 const getters = {
   sidebar: state => state.app.sidebar,
   device: state => state.app.device,
@@ -8,6 +9,7 @@ const getters = {
   permission_routers: state => state.permission.routers,
   addRouters: state => state.permission.addRouters,
   roles_list: state => state.role.roles,
-  permissions_list: state => state.role.permissions
+  permissions_list: state => state.role.permissions,
+  allowUser: state => state.role.allowUser
 }
 export default getters

@@ -1,13 +1,15 @@
 import {
   roleAll,
   permissionAll,
-  usersRole
+  usersRole,
+  allowUser
 } from '@/api/roles'
 import { roleList, permissionList } from '../../api/roles'
 const role = {
   state: {
     roles: [],
-    permissions: []
+    permissions: [],
+    allowUser: []
   },
   mutations: {
     SET_ROLESLIST: (state, roles) => {
@@ -15,6 +17,9 @@ const role = {
     },
     SET_PERMISSIONSLIST: (state, permissions) => {
       state.permissions = permissions
+    },
+    SET_ALLOWUSER: (state, allowUser) => {
+      state.allowUser = allowUser
     }
   },
   actions: {
@@ -59,6 +64,16 @@ const role = {
       return new Promise((resolve, reject) => {
         permissionList().then(response => {
           commit('SET_PERMISSIONSLIST', response.data.list)
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    AllowUser({ commit }) {
+      return new Promise((resolve, reject) => {
+        allowUser().then(response => {
+          commit('SET_ALLOWUSER', response.data.list)
           resolve(response)
         }).catch(error => {
           reject(error)

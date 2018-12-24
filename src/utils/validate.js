@@ -1,15 +1,10 @@
 /**
  * Created by jiachenpan on 16/11/18.
  */
-import { allowUser } from '@/api/roles'
 
-export function isvalidUsername(str) {
-  var valid_map = []
-  allowUser().then(response => {
-    valid_map = response.data.list
-  })
-  // const valid_map = ['admin', 'editor']
-  return valid_map.indexOf(str.trim()) >= 0
+export function isvalidUsername(str, user) {
+  // var valid_map = mapGetters(['allowUser'])
+  return user.indexOf(str.trim()) >= 0
 }
 
 /* 合法uri*/
