@@ -56,13 +56,13 @@ export const asyncRouterMap = [
         path: 'editRole',
         name: 'EditRole',
         component: () => import('@/views/table/editRole'),
-        meta: { title: 'editRole', icon: 'table' }
+        meta: { title: 'editRole', icon: 'table', roles: ['ROLE_ALL'] }
       },
       {
         path: 'editPermission',
         name: 'EditPermission',
         component: () => import('@/views/table/editPermission'),
-        meta: { title: 'editPermission', icon: 'table' }
+        meta: { title: 'editPermission', icon: 'table', roles: ['ROLE_ALL'] }
       },
       {
         path: 'tree',
@@ -76,12 +76,21 @@ export const asyncRouterMap = [
   {
     path: '/form',
     component: Layout,
+    name: 'Info',
+    redirect: '/form/student',
+    meta: { title: 'Info', icon: 'form' },
     children: [
       {
-        path: 'index',
+        path: '_index',
         name: 'Form',
         component: () => import('@/views/form/index'),
         meta: { title: 'Form', icon: 'form' }
+      },
+      {
+        path: 'student',
+        name: 'student',
+        component: () => import('@/views/form/student'),
+        meta: { title: 'StudentInfo', icon: 'form', roles: ['ROLE_ALL', 'ROLE_STU'] }
       }
     ]
   },
