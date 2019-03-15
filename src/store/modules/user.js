@@ -1,4 +1,5 @@
 import { login, logout, getInfo } from '@/api/login'
+
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
@@ -31,6 +32,7 @@ const user = {
       return new Promise((resolve, reject) => {
         login(username, userInfo.password).then(response => {
           const data = response.data
+          // console.log('token:' + data.token)
           setToken(data.token)
           commit('SET_TOKEN', data.token)
           resolve()
@@ -43,6 +45,7 @@ const user = {
     // 获取用户信息
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
+        console.log('准备发送请求')
         getInfo(state.token).then(response => {
           const data = response.data
           if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
@@ -54,7 +57,8 @@ const user = {
           commit('SET_AVATAR', data.avatar)
           resolve(response)
         }).catch(error => {
-          reject(error)
+          console.log('请求发送后发生错误！')
+          reject(error + '...')
         })
       })
     },

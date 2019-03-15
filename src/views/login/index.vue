@@ -43,23 +43,24 @@ export default {
   name: 'Login',
   data() {
     const validateUsername = (rule, value, callback) => {
-      if (!isvalidUsername(value)) {
+      if (!isvalidUsername(value, this.allowUser)) {
         callback(new Error('请输入正确的用户名'))
       } else {
         callback()
       }
     }
     const validatePass = (rule, value, callback) => {
-      if (value.length < 5) {
-        callback(new Error('密码不能小于5位'))
+      if (value.length < 3) {
+        callback(new Error('密码不能小于3位'))
       } else {
         callback()
       }
     }
     return {
+      allowUser: [],
       loginForm: {
-        username: 'admin',
-        password: 'admin'
+        username: '',
+        password: ''
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -77,6 +78,12 @@ export default {
       },
       immediate: true
     }
+  },
+  mounted() {
+    this.$store.dispatch('AllowUser').then((res) => {
+      this.allowUser = res.data.list
+    }).catch(() => {
+    })
   },
   methods: {
     showPwd() {
