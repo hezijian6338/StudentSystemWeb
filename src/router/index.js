@@ -56,19 +56,19 @@ export const asyncRouterMap = [
         path: 'editRole',
         name: 'EditRole',
         component: () => import('@/views/table/editRole'),
-        meta: { title: 'editRole', icon: 'table', roles: ['ROLE_ALL'] }
+        meta: { title: '角色控制', icon: 'table', roles: ['ROLE_ALL'] }
       },
       {
         path: 'editPermission',
         name: 'EditPermission',
         component: () => import('@/views/table/editPermission'),
-        meta: { title: 'editPermission', icon: 'table', roles: ['ROLE_ALL'] }
+        meta: { title: '权限控制', icon: 'table', roles: ['ROLE_ALL'] }
       },
       {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree', roles: ['ROLE_ALL'] }
+        meta: { title: '角色权限树', icon: 'tree', roles: ['ROLE_ALL'] }
       }
     ]
   },
@@ -90,7 +90,13 @@ export const asyncRouterMap = [
         path: 'student',
         name: 'student',
         component: () => import('@/views/form/student'),
-        meta: { title: 'StudentInfo', icon: 'form', roles: ['ROLE_ALL', 'ROLE_STU'] }
+        meta: { title: 'StudentInfo', icon: 'form', roles: ['ROLE_STU'] }
+      },
+      {
+        path: 'selectCourses',
+        name: 'selectCourses',
+        component: () => import('@/views/form/selectCourses'),
+        meta: { title: '学生选课', icon: 'form', roles: ['ROLE_STU'] }
       }
     ]
   },

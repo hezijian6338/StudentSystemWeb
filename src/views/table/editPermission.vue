@@ -5,10 +5,7 @@
       :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
       style="width: 50%"
     >
-      <el-input
-        v-model="search"
-        size="mini"
-        placeholder="输入关键字搜索"/>
+      <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
       <el-table-column label="rolename" prop="name"/>
       <el-table-column label="permissions">
         <template slot-scope="scope">
@@ -19,12 +16,14 @@
             size="medium"
             style="margin-left: 20px;"
             placeholder="请赋予权限..."
-            @change="findSelected">
+            @change="findSelected"
+          >
             <el-option
               v-for="(key) in permissions_list"
               :key="key.id"
               :label="key.name"
-              :value="key">
+              :value="key"
+            >
               <span style="float: left">{{ key.id }}</span>
               <span style="margin: 20px; font-size: 13px">{{ key.name }}</span>
             </el-option>
@@ -36,7 +35,7 @@
           <!-- <el-input
             v-model="search"
             size="mini"
-            placeholder="输入关键字搜索"/> -->
+          placeholder="输入关键字搜索"/>-->
           {{ loading }}
         </template>
         <template slot-scope="scope">
@@ -81,11 +80,13 @@ export default {
         ]
       },
       search: '',
-      permissions: [{
-        description: '所有权限',
-        id: 3,
-        name: 'ROLE_ALL'
-      }]
+      permissions: [
+        {
+          description: '所有权限',
+          id: 3,
+          name: 'ROLE_ALL'
+        }
+      ]
     }
   },
   computed: {

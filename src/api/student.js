@@ -7,3 +7,9 @@ export function studentInfo(studentno) {
     method: 'get'
   })
 }
+export function courseList(studentno) {
+  return request({
+    url: '/students/' + studentno + '/courseInfos',
+    method: 'get'
+  })
+}
