@@ -21,7 +21,7 @@ export function course(courseid) {
 }
 export function selectedCourses(studentno) {
   return request({
-    url: '/students/' + studentno,
+    url: '/course/info/student/' + studentno,
     method: 'get'
   })
 }

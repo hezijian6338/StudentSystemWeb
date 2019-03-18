@@ -16,6 +16,15 @@
       <el-table-column
         prop="credit"
         label="学分"/>
+      <el-table-column
+        prop="employName"
+        label="教学老师"/>
+      <el-table-column
+        prop="academicyear"
+        label="学年"/>
+      <el-table-column
+        prop="term"
+        label="学期"/>
     </el-table>
   </div>
 </template>
@@ -31,6 +40,9 @@ export default {
   computed: {
     ...mapGetters(['name'])
   },
+  mounted() {
+    this.loadData()
+  },
   methods: {
     loadData() {
       selectedCourses(this.name).then(res => {
@@ -40,4 +52,9 @@ export default {
   }
 }
 </script>
+<style>
+.div {
+  margin: 20px;
+}
+</style>
 

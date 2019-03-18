@@ -79,7 +79,7 @@ export default {
 </script>
 <style>
 .div {
-  margin: 10px;
+  margin: 20px;
 }
 </style>
 

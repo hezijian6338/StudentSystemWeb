@@ -21,6 +21,7 @@ import Layout from '../views/layout/Layout'
     icon: 'svg-name'             the icon show in the sidebar,
   }
 **/
+
 export const constantRouterMap = [
   { path: '/login', component: () => import('@/views/login/index'), hidden: true },
   { path: '/404', component: () => import('@/views/404'), hidden: true },
@@ -90,13 +91,19 @@ export const asyncRouterMap = [
         path: 'student',
         name: 'student',
         component: () => import('@/views/form/student'),
-        meta: { title: 'StudentInfo', icon: 'form', roles: ['ROLE_STU'] }
+        meta: { title: '学生个人信息', icon: 'icon-shebeiguanli', roles: ['ROLE_STU'] }
       },
       {
         path: 'selectCourses',
         name: 'selectCourses',
         component: () => import('@/views/form/selectCourses'),
-        meta: { title: '学生选课', icon: 'form', roles: ['ROLE_STU'] }
+        meta: { title: '学生选课', icon: 'edit', roles: ['ROLE_STU'] }
+      },
+      {
+        path: 'selectedCourses',
+        name: 'selectedCourses',
+        component: () => import('@/views/form/selectedCourses'),
+        meta: { title: '选课情况', icon: 'form', roles: ['ROLE_STU'] }
       }
     ]
   },

@@ -27,3 +27,7 @@ export default {
   }
 }
 </script>
+<style>
+@import url('//at.alicdn.com/t/font_1094981_vyz3j3528b.css');
+</style>
+

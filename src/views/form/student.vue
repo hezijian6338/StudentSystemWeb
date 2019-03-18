@@ -8,7 +8,7 @@
         style="background-color: #f9fafc;"
       >
         <el-row :gutter="20" type="flex" justify="center">
-          <el-col :span="4">
+          <el-col :span="5">
             <el-form-item label="Your Name">
               <el-input v-model="student.stuname"/>
             </el-form-item>
@@ -18,24 +18,24 @@
               <el-input v-model="student.studentno"/>
             </el-form-item>
           </el-col>
-          <el-col :span="3">
+          <el-col :span="5">
             <el-form-item label="Sex">
               <el-input v-model="student.sex"/>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="20">
-          <el-col :span="5">
+          <el-col :span="6">
             <el-form-item label="ORG Name">
               <el-input v-model="student.orgName"/>
             </el-form-item>
           </el-col>
-          <el-col :span="5">
+          <el-col :span="7">
             <el-form-item label="Major">
               <el-input v-model="student.major"/>
             </el-form-item>
           </el-col>
-          <el-col :span="5">
+          <el-col :span="8">
             <el-form-item label="Classname">
               <el-input v-model="student.classname"/>
             </el-form-item>
@@ -47,48 +47,6 @@
           </el-col>
         </el-row>
       </el-form>
-    </div>
-    <div>
-      <el-table
-        :data="course"
-        style="width: 100%">
-        <el-table-column type="expand">
-          <template slot-scope="props">
-            <el-form label-position="left" inline class="demo-table-expand">
-              <el-form-item label="商品名称">
-                <span>{{ props.row.coursetype }}</span>
-              </el-form-item>
-              <el-form-item label="所属店铺">
-                <span>{{ props.row.employName }}</span>
-              </el-form-item>
-              <el-form-item label="商品 ID">
-                <span>{{ props.row.term }}</span>
-              </el-form-item>
-              <el-form-item label="店铺 ID">
-                <span>{{ props.row.credit }}</span>
-              </el-form-item>
-              <el-form-item label="商品分类">
-                <span>{{ props.row.totalhours }}</span>
-              </el-form-item>
-              <el-form-item label="店铺地址">
-                <span>{{ props.row.finalscore }}</span>
-              </el-form-item>
-              <el-form-item label="商品描述">
-                <span>{{ props.row.memo }}</span>
-              </el-form-item>
-            </el-form>
-          </template>
-        </el-table-column>
-        <el-table-column
-          label="商品 ID"
-          prop="coursecond"/>
-        <el-table-column
-          label="商品名称"
-          prop="coursename"/>
-        <el-table-column
-          label="描述"
-          prop="academicyear"/>
-      </el-table>
     </div>
   </div>
 </template>
