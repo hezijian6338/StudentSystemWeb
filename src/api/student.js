@@ -13,3 +13,9 @@ export function courseList(studentno) {
     method: 'get'
   })
 }
+export function course(courseid) {
+  return request({
+    url: '/course/info/id/' + courseid,
+    method: 'get'
+  })
+}

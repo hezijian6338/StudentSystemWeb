@@ -82,6 +82,7 @@ export default {
   mounted() {
     this.$store.dispatch('AllowUser').then((res) => {
       this.allowUser = res.data.list
+      console.log(this.allowUser)
     }).catch(() => {
     })
   },
