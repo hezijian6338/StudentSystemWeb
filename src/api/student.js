@@ -19,3 +19,10 @@ export function course(courseid) {
     method: 'get'
   })
 }
+export function selectedCourses(studentno) {
+  return request({
+    url: '/students/' + studentno,
+    method: 'get'
+  })
+}
+
