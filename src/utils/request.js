@@ -47,7 +47,7 @@ service.interceptors.response.use(
     const status = response.status
     if (status !== 200) {
       Message({
-        message: res.message,
+        message: res.message + '服务器连接超时',
         type: 'error',
         duration: 5 * 1000
       })

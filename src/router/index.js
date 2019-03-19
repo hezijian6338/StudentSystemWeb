@@ -45,7 +45,7 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/example/table',
     name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    meta: { title: 'Example', icon: 'example', roles: ['ROLE_ALL'] },
     children: [
       {
         path: 'table',
@@ -57,19 +57,19 @@ export const asyncRouterMap = [
         path: 'editRole',
         name: 'EditRole',
         component: () => import('@/views/table/editRole'),
-        meta: { title: '角色控制', icon: 'table', roles: ['ROLE_ALL'] }
+        meta: { title: '角色控制', icon: 'table' }
       },
       {
         path: 'editPermission',
         name: 'EditPermission',
         component: () => import('@/views/table/editPermission'),
-        meta: { title: '权限控制', icon: 'table', roles: ['ROLE_ALL'] }
+        meta: { title: '权限控制', icon: 'table' }
       },
       {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
-        meta: { title: '角色权限树', icon: 'tree', roles: ['ROLE_ALL'] }
+        meta: { title: '角色权限树', icon: 'tree' }
       }
     ]
   },
@@ -79,31 +79,31 @@ export const asyncRouterMap = [
     component: Layout,
     name: 'Info',
     redirect: '/form/student',
-    meta: { title: 'Info', icon: 'form' },
+    meta: { title: '学生信息', icon: 'monitor' },
     children: [
       {
         path: '_index',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        meta: { title: 'Form', icon: 'group' }
       },
       {
         path: 'student',
         name: 'student',
         component: () => import('@/views/form/student'),
-        meta: { title: '学生个人信息', icon: 'icon-shebeiguanli', roles: ['ROLE_STU'] }
+        meta: { title: '学生个人信息', icon: 'notebook(1)', roles: ['ROLE_STU'] }
       },
       {
         path: 'selectCourses',
         name: 'selectCourses',
         component: () => import('@/views/form/selectCourses'),
-        meta: { title: '学生选课', icon: 'edit', roles: ['ROLE_STU'] }
+        meta: { title: '学生选课', icon: 'bookmark', roles: ['ROLE_STU'] }
       },
       {
         path: 'selectedCourses',
         name: 'selectedCourses',
         component: () => import('@/views/form/selectedCourses'),
-        meta: { title: '选课情况', icon: 'form', roles: ['ROLE_STU'] }
+        meta: { title: '选课情况', icon: 'checklist', roles: ['ROLE_STU'] }
       }
     ]
   },
