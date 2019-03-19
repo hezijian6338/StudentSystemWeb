@@ -12,7 +12,7 @@
         <el-checkbox v-if="courseType(course)" :label="course.id" :disabled="!hasPermission('STU_COURSE_SAVE')" >{{ course.coursename }}</el-checkbox>
       </div>
     </el-checkbox-group>
-    {{ checkList1 }},{{ checkList2 }}
+    <!-- {{ checkList1 }},{{ checkList2 }} -->
     <div id="button-group">
       <el-button v-if="hasPermission('STU_COURSE_SAVE')" type="primary" icon="el-icon-plus" circle/>
       <el-button

@@ -27,7 +27,7 @@
         <el-row :gutter="20">
           <el-col :span="6">
             <el-form-item label="ORG Name">
-              <el-input v-model="student.orgName"/>
+              <el-input v-model="student.orgName" disabled/>
             </el-form-item>
           </el-col>
           <el-col :span="7">

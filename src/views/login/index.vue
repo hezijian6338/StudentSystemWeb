@@ -1,16 +1,16 @@
 <template>
-  <div class="login-container">
+  <div v-loading.fullscreen.lock="fullscreenLoading" class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
-      <h3 class="title">vue-admin-template</h3>
+      <h3 class="title">Student Management System</h3>
       <el-form-item prop="username">
         <span class="svg-container">
-          <svg-icon icon-class="user" />
+          <svg-icon icon-class="avatar" />
         </span>
         <el-input v-model="loginForm.username" name="username" type="text" auto-complete="on" placeholder="username" />
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container">
-          <svg-icon icon-class="password" />
+          <svg-icon icon-class="lock" />
         </span>
         <el-input
           :type="pwdType"
@@ -20,7 +20,7 @@
           placeholder="password"
           @keyup.enter.native="handleLogin" />
         <span class="show-pwd" @click="showPwd">
-          <svg-icon icon-class="eye" />
+          <svg-icon :icon-class="pwdIcon" />
         </span>
       </el-form-item>
       <el-form-item>
@@ -67,7 +67,9 @@ export default {
         password: [{ required: true, trigger: 'blur', validator: validatePass }]
       },
       loading: false,
+      fullscreenLoading: false,
       pwdType: 'password',
+      pwdIcon: 'cantsee',
       redirect: undefined
     }
   },
@@ -80,18 +82,25 @@ export default {
     }
   },
   mounted() {
+    this.fullscreenLoading = true
     this.$store.dispatch('AllowUser').then((res) => {
       this.allowUser = res.data.list
+      this.fullscreenLoading = false
       console.log(this.allowUser)
     }).catch(() => {
     })
+    setTimeout(() => {
+      this.fullscreenLoading = false
+    }, 10000)
   },
   methods: {
     showPwd() {
       if (this.pwdType === 'password') {
         this.pwdType = ''
+        this.pwdIcon = 'see'
       } else {
         this.pwdType = 'password'
+        this.pwdIcon = 'cantsee'
       }
     },
     handleLogin() {
@@ -123,7 +132,8 @@ $light_gray:#eee;
   .el-input {
     display: inline-block;
     height: 47px;
-    width: 85%;
+    width: 80%;
+    padding-left: 20px;
     input {
       background: transparent;
       border: 0px;
@@ -180,7 +190,8 @@ $light_gray:#eee;
     padding: 6px 5px 6px 15px;
     color: $dark_gray;
     vertical-align: middle;
-    width: 30px;
+    width: 40px;
+    height: 40px;
     display: inline-block;
   }
   .title {
