@@ -47,14 +47,12 @@
         prop="term"
         label="学期"/>
     </el-table>
-    <svg class="icon" aria-hidden="true">
-      <use xlink:href="#icon-setup"/>
-    </svg>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
 import { selectedCourses } from '@/api/student'
+
 export default {
   data() {
     return {
@@ -79,13 +77,6 @@ export default {
 <style>
 .div {
   margin: 20px;
-}
-.icon {
-  width: 10em;
-  height: 10em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
 }
 .demo-table-expand {
   font-size: 0;

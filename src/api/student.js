@@ -25,4 +25,9 @@ export function selectedCourses(studentno) {
     method: 'get'
   })
 }
-
+export function selectedGuidTeacher(studentno) {
+  return request({
+    url: '/learningguid/studentslist/studentno/' + studentno,
+    method: 'get'
+  })
+}

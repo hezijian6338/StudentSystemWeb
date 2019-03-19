@@ -79,31 +79,31 @@ export const asyncRouterMap = [
     component: Layout,
     name: 'Info',
     redirect: '/form/student',
-    meta: { title: '学生信息', icon: 'monitor' },
+    meta: { title: '学生信息', icon: 'monitor', roles: ['ROLE_STU'] },
     children: [
-      {
-        path: '_index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'group' }
-      },
       {
         path: 'student',
         name: 'student',
         component: () => import('@/views/form/student'),
-        meta: { title: '学生个人信息', icon: 'notebook(1)', roles: ['ROLE_STU'] }
+        meta: { title: '学生个人信息', icon: 'bookmark' }
       },
       {
         path: 'selectCourses',
         name: 'selectCourses',
         component: () => import('@/views/form/selectCourses'),
-        meta: { title: '学生选课', icon: 'bookmark', roles: ['ROLE_STU'] }
+        meta: { title: '学生选课', icon: 'notebook(1)' }
       },
       {
         path: 'selectedCourses',
         name: 'selectedCourses',
         component: () => import('@/views/form/selectedCourses'),
-        meta: { title: '选课情况', icon: 'checklist', roles: ['ROLE_STU'] }
+        meta: { title: '选课情况', icon: 'checklist' }
+      },
+      {
+        path: 'selectedGuidTeacher',
+        name: 'selectedGuidTeacher',
+        component: () => import('@/views/form/selectedGuidTeacher'),
+        meta: { title: '导学老师', icon: 'conversation (1)' }
       }
     ]
   },
