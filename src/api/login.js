@@ -1,6 +1,7 @@
 import request from '@/utils/request'
 import qs from 'qs'
 
+// TODO: 用户登录
 export function login(username, password) {
   return request({
     url: '/login',
@@ -12,6 +13,7 @@ export function login(username, password) {
   })
 }
 
+// TODO: 拉取登录用户的信息
 export function getInfo(token) {
   return request({
     url: '/user/name',
@@ -22,6 +24,7 @@ export function getInfo(token) {
   })
 }
 
+// TODO: 登出(没在使用)
 export function logout() {
   return request({
     url: '/user/logout',
