@@ -13,27 +13,13 @@
       </div>
     </el-checkbox-group>
     <!-- {{ checkList1 }},{{ checkList2 }} -->
-    <div id="button-group">
-      <el-button v-if="hasPermission('STU_COURSE_SAVE')" type="primary" icon="el-icon-plus" circle/>
-      <el-button
-        v-if="hasPermission('STU_COURSE_SAVE')"
-        type="success"
-        icon="el-icon-check"
-        circle
-        @click="saveData"
-      />
-      <el-button
-        v-if="hasPermission('STU_COURSE_UPDATE')"
-        type="primary"
-        icon="el-icon-plus"
-        circle
-      />
-      <el-button
-        v-if="hasPermission('STU_COURSE_UPDATE')"
-        type="success"
-        icon="el-icon-check"
-        circle
-      />
+    <div class="button">
+      <svg v-if="hasPermission('STU_COURSE_UPDATE')" class="icon edit" aria-hidden="true" @click="saveData">
+        <use xlink:href="#icon-edit"/>
+      </svg>
+      <svg v-if="hasPermission('STU_COURSE_SAVE')" class="icon finish" aria-hidden="true">
+        <use xlink:href="#icon-finish"/>
+      </svg>
     </div>
   </div>
 </template>
@@ -80,6 +66,18 @@ export default {
 <style>
 .div {
   margin: 20px;
+}
+.button {
+  text-align: center;
+  margin: 50px auto;
+}
+.button > .icon {
+  width: 3em;
+  height: 3em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  cursor: pointer;
 }
 </style>
 

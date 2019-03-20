@@ -100,10 +100,16 @@ export const asyncRouterMap = [
         meta: { title: '选课情况', icon: 'checklist' }
       },
       {
+        path: 'selectGuidTeacher',
+        name: 'selectGuidTeacher',
+        component: () => import('@/views/form/selectGuidTeacher'),
+        meta: { title: '选择导学老师', icon: 'group' }
+      },
+      {
         path: 'selectedGuidTeacher',
         name: 'selectedGuidTeacher',
         component: () => import('@/views/form/selectedGuidTeacher'),
-        meta: { title: '导学老师', icon: 'conversation (1)' }
+        meta: { title: '导学老师', icon: 'conversation' }
       }
     ]
   },

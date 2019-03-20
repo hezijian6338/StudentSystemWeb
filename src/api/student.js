@@ -36,3 +36,19 @@ export function selectedGuidTeacher(studentno) {
     method: 'get'
   })
 }
+// TODO: 可选导师列表
+// FIXME: 没做条件过滤
+export function GuidTeachersList() {
+  return request({
+    url: '/teacher/info',
+    method: 'get'
+  })
+}
+
+// TODO: 学生重新选择导师
+export function ReGuidTeacher(id, employno) {
+  return request({
+    url: '/learningguid/studentslist/' + id + '/' + employno,
+    method: 'post'
+  })
+}
