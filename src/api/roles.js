@@ -50,6 +50,14 @@ export function permissionRole() {
   })
 }
 
+export function addPermissionRole(permission_role) {
+  return request({
+    url: '/permission/role/connection',
+    method: 'post',
+    data: permission_role
+  })
+}
+
 // TODO: 编辑权限对应的角色
 export function editPermission(role) {
   return request({

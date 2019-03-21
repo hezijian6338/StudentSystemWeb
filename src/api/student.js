@@ -8,6 +8,7 @@ export function studentInfo(studentno) {
     method: 'get'
   })
 }
+
 // TODO: 根据学生的学号来获取可选课程的信息
 export function courseList(studentno) {
   return request({
@@ -15,6 +16,7 @@ export function courseList(studentno) {
     method: 'get'
   })
 }
+
 // TODO: 根据课程的id来获取课程的详细信息
 export function course(courseid) {
   return request({
@@ -22,6 +24,23 @@ export function course(courseid) {
     method: 'get'
   })
 }
+
+export function selectCourses(studentno, courseids) {
+  return request({
+    url: '/course/info/student/' + studentno,
+    method: 'post',
+    data: { courseids: courseids }
+  })
+}
+
+// TODO: 已选课程id(根据学生的学号查询)
+export function selectedCourseIds(studentno) {
+  return request({
+    url: '/course/info/student/' + studentno + '/ids',
+    method: 'get'
+  })
+}
+
 // TODO: 已选课程(根据学生的学号查询)
 export function selectedCourses(studentno) {
   return request({
@@ -29,6 +48,7 @@ export function selectedCourses(studentno) {
     method: 'get'
   })
 }
+
 // TODO: 已选导师(根据学生的学号查询)
 export function selectedGuidTeacher(studentno) {
   return request({
@@ -36,6 +56,7 @@ export function selectedGuidTeacher(studentno) {
     method: 'get'
   })
 }
+
 // TODO: 可选导师列表
 // FIXME: 没做条件过滤
 export function GuidTeachersList() {

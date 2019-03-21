@@ -6,15 +6,14 @@
       style="width: 50%"
     >
       <el-table-column label="UserName" prop="username"/>
-      <el-table-column label="Roles">
+      <el-table-column label="Roles" width="250">
         <template slot-scope="scope">
           <el-select
             v-model="scope.row.roles"
             value-key="id"
             multiple
             collapse-tags
-            size="medium"
-            style="margin-left: 20px;"
+            style="margin-left: 20px;width: 250px;"
             placeholder="请选择"
             @change="findSelected">
             <el-option

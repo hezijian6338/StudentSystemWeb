@@ -45,25 +45,19 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/example/table',
     name: 'Example',
-    meta: { title: 'Example', icon: 'example', roles: ['ROLE_ALL'] },
+    meta: { title: '角色权限控制', icon: 'manger', roles: ['ROLE_ALL'] },
     children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
       {
         path: 'editRole',
         name: 'EditRole',
         component: () => import('@/views/table/editRole'),
-        meta: { title: '角色控制', icon: 'table' }
+        meta: { title: '角色控制', icon: 'role' }
       },
       {
         path: 'editPermission',
         name: 'EditPermission',
         component: () => import('@/views/table/editPermission'),
-        meta: { title: '权限控制', icon: 'table' }
+        meta: { title: '权限控制', icon: 'permission' }
       },
       {
         path: 'tree',

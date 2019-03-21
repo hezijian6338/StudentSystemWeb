@@ -1,23 +1,23 @@
 <template>
   <div>
     <h1>基础课程:</h1>
-    <el-checkbox-group v-model="checkList1">
+    <el-checkbox-group v-model="courseids">
       <div v-for="course in courses" :key="course.id" style="padding:0 20px;text-align: justify;display: inline-block;width:200px;" >
-        <el-checkbox v-if="!courseType(course)" :label="course.coursecode" :disabled="!hasPermission('STU_COURSE_SAVE')">{{ course.coursename }}</el-checkbox>
+        <el-checkbox v-if="!courseType(course)" :label="course.id" :disabled="!hasPermission('STU_COURSE_SAVE')">{{ course.coursename }}</el-checkbox>
       </div>
     </el-checkbox-group>
     <h1>体育课程:</h1>
-    <el-checkbox-group v-model="checkList2" :max="1">
+    <el-checkbox-group v-model="courseids" :max="1">
       <div v-for="course in courses" :key="course.id" style="padding:0 20px;text-align: justify;display: inline-block;width:200px;">
         <el-checkbox v-if="courseType(course)" :label="course.id" :disabled="!hasPermission('STU_COURSE_SAVE')" >{{ course.coursename }}</el-checkbox>
       </div>
     </el-checkbox-group>
-    <!-- {{ checkList1 }},{{ checkList2 }} -->
+    <!-- {{ courseids }} -->
     <div class="button">
       <svg v-if="hasPermission('STU_COURSE_UPDATE')" class="icon edit" aria-hidden="true" @click="saveData">
         <use xlink:href="#icon-edit"/>
       </svg>
-      <svg v-if="hasPermission('STU_COURSE_SAVE')" class="icon finish" aria-hidden="true">
+      <svg v-if="hasPermission('STU_COURSE_SAVE')" class="icon finish" aria-hidden="true" @click="saveData">
         <use xlink:href="#icon-finish"/>
       </svg>
     </div>
@@ -26,14 +26,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { courseList, course } from '@/api/student'
+import { courseList, selectedCourseIds, selectCourses } from '@/api/student'
 
 export default {
   data() {
     return {
       courses: [],
-      checkList1: [],
-      checkList2: []
+      courseids: []
+      // checkList2: []
     }
   },
   computed: {
@@ -54,10 +54,16 @@ export default {
         this.courses = res.data
         // console.log(this.courses)
       })
+      selectedCourseIds(this.name).then(res => {
+        this.courseids = res.data
+      })
     },
     saveData() {
-      course(this.checkList2[0]).then(res => {
-        this.checkList1.push(res.data.coursecode)
+      // course(this.checkList2[0]).then(res => {
+      //   this.checkList1.push(res.data.coursecode)
+      // })
+      selectCourses(this.name, this.courseids).then(res => {
+
       })
     }
   }
