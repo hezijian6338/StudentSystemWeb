@@ -3,13 +3,13 @@
     <h1>基础课程:</h1>
     <el-checkbox-group v-model="courseids">
       <div v-for="course in courses" :key="course.id" style="padding:0 20px;text-align: justify;display: inline-block;width:200px;" >
-        <el-checkbox v-if="!courseType(course)" :label="course.id" :disabled="!hasPermission('STU_COURSE_SAVE')">{{ course.coursename }}</el-checkbox>
+        <el-checkbox v-if="!courseType(course)" :label="course.id" :disabled="(!hasPermission('STU_COURSE_SAVE')) || (!hasPermission('STU_COURSE_UPDATE'))">{{ course.coursename }}</el-checkbox>
       </div>
     </el-checkbox-group>
     <h1>体育课程:</h1>
     <el-checkbox-group v-model="courseids" :max="1">
       <div v-for="course in courses" :key="course.id" style="padding:0 20px;text-align: justify;display: inline-block;width:200px;">
-        <el-checkbox v-if="courseType(course)" :label="course.id" :disabled="!hasPermission('STU_COURSE_SAVE')" >{{ course.coursename }}</el-checkbox>
+        <el-checkbox v-if="courseType(course)" :label="course.id" :disabled="(!hasPermission('STU_COURSE_SAVE')) || (!hasPermission('STU_COURSE_UPDATE'))" >{{ course.coursename }}</el-checkbox>
       </div>
     </el-checkbox-group>
     <!-- {{ courseids }} -->
