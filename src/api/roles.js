@@ -50,6 +50,7 @@ export function permissionRole() {
   })
 }
 
+// TODO: 添加用户角色同时添加该角色的权限
 export function addPermissionRole(permission_role) {
   return request({
     url: '/permission/role/connection',

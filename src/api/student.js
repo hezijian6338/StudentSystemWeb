@@ -25,6 +25,8 @@ export function course(courseid) {
   })
 }
 
+// TODO: 学生选课(批量)
+// FIXME: 没有启用该功能,因为逻辑混乱...
 export function selectCourses(studentno, courseids) {
   return request({
     url: '/course/info/student/' + studentno,
