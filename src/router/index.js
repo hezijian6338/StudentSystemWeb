@@ -163,7 +163,7 @@ export const asyncRouterMap = [
         component: () => import('@/views/nested/menu2/index'),
         meta: { title: 'menu2' }
       }
-    ]
+    ], hidden: true
   },
 
   {
