@@ -4,6 +4,8 @@
     <div class="dashboard-text">
       roles:
       <span v-for="role in roles" :key="role">||{{ role }}</span>
+      user:
+      <span v-for="user in allowUser" :key="user">||{{ user }}</span>
     </div>
   </div>
 </template>
@@ -14,7 +16,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Dashboard',
   computed: {
-    ...mapGetters(['name', 'roles'])
+    ...mapGetters(['name', 'roles', 'allowUser'])
   }
 }
 </script>
