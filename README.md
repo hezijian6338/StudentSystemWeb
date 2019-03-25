@@ -1,3 +1,6 @@
+# 改编自以下项目...
+## 部署步骤和以下一致
+
 # vue-admin-template
 
 > A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
