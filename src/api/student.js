@@ -9,6 +9,14 @@ export function studentInfo(studentno) {
   })
 }
 
+// TODO: 返回现有的学生信息
+export function studentsOfUser() {
+  return request({
+    url: '/students/list/user',
+    method: 'get'
+  })
+}
+
 // TODO: 根据学生的学号来获取可选课程的信息
 export function courseList(studentno) {
   return request({
