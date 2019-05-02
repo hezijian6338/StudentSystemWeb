@@ -9,13 +9,13 @@
           >
             <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
             <el-table-column label="rolename" prop="name" width="150"/>
-            <el-table-column label="permissions" width="500">
+            <el-table-column label="permissions" width="400">
               <template slot-scope="scope">
                 <el-select
                   v-model="scope.row.permissions"
                   value-key="id"
                   multiple
-                  style="width: 500px"
+                  style="width: 400px"
                   placeholder="请赋予权限..."
                   @change="findSelected"
                 >

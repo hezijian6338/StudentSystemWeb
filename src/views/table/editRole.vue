@@ -3,17 +3,17 @@
     <el-table
       v-loading="loading"
       :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-      style="width: 50%"
+      style="width: 80%"
     >
       <el-table-column label="UserName" prop="username"/>
-      <el-table-column label="Roles" width="250">
+      <el-table-column label="Roles" width="300px">
         <template slot-scope="scope">
           <el-select
             v-model="scope.row.roles"
             value-key="id"
             multiple
             collapse-tags
-            style="margin-left: 20px;width: 250px;"
+            style="width: 250px;"
             placeholder="请选择"
             @change="findSelected">
             <el-option
@@ -22,7 +22,7 @@
               :label="key.name"
               :value="key">
               <span style="float: left">{{ key.id }}</span>
-              <span style="margin: 20px; font-size: 13px">{{ key.name }}</span>
+              <span style="font-size: 13px">{{ key.name }}</span>
             </el-option>
           </el-select>
         </template>

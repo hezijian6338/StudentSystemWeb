@@ -5,7 +5,7 @@
     </div>
     <div class="select">
       <el-row :gutter="10" type="flex" justify="center">
-        <el-col :xs="5" :sm="5" :md="5" :lg="3">
+        <el-col :xs="5" :sm="5" :md="8" :lg="3">
           <div class="grid-content bg-purple select-teacher">
             请选择你的导学老师:
           </div>

@@ -64,6 +64,18 @@ export const asyncRouterMap = [
         name: 'Tree',
         component: () => import('@/views/tree/index'),
         meta: { title: '角色权限树', icon: 'tree' }
+      },
+      {
+        path: 'addUser',
+        name: 'AddUser',
+        component: () => import('@/views/table/addUser'),
+        meta: { title: '添加用户', icon: 'setup' }
+      },
+      {
+        path: 'addUsers',
+        name: 'AddUsers',
+        component: () => import('@/views/table/addUsers'),
+        meta: { title: '批量添加用户', icon: 'setup' }
       }
     ]
   },

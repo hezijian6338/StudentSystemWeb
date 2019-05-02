@@ -31,3 +31,20 @@ export function logout() {
     method: 'post'
   })
 }
+
+// TODO: 注册用户(单个)
+export function addUser(User) {
+  return request({
+    url: '/user',
+    method: 'post',
+    data: User
+  })
+}
+
+// TODO: 查看所有用户
+export function findUser() {
+  return request({
+    url: '/user',
+    method: 'get'
+  })
+}
