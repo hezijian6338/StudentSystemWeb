@@ -26,13 +26,15 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { courseList, selectCourses } from '@/api/student'
+import { courseList, selectCourses2, selectedCourseIds } from '@/api/student'
 
 export default {
   data() {
     return {
       courses: [],
-      courseids: []
+      courseids: [],
+      c: {},
+      checklist: []
       // checkList2: []
     }
   },
@@ -52,17 +54,24 @@ export default {
     loadData() {
       courseList(this.name).then(res => {
         this.courses = res.data
-        // console.log(this.courses)
+        console.log(res.data)
       })
-      // selectedCourseIds(this.name).then(res => {
-      //   this.courseids = res.data
-      // })
+      selectedCourseIds(this.name).then(res => {
+        this.courseids = res.data
+      })
     },
     saveData() {
       // course(this.checkList2[0]).then(res => {
       //   this.checkList1.push(res.data.coursecode)
       // })
-      selectCourses(this.name, this.courseids).then(res => {
+      var co = { 'courseids': [] }
+      for (var i = 0; i < this.courseids.length; i++) {
+        // co = (this.courseids[i])
+        co.courseids.push(this.courseids[i])
+        // this.checklist.push(co)
+      }
+      console.log(co)
+      selectCourses2(this.name, co).then(res => {
 
       })
     }

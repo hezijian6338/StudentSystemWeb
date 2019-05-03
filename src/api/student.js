@@ -39,7 +39,16 @@ export function selectCourses(studentno, courseids) {
   return request({
     url: '/course/info/student/' + studentno,
     method: 'post',
-    data: { courseids: courseids }
+    data: { courseids }
+  })
+}
+
+// TODO: 学生选课(批量)2
+export function selectCourses2(studentno, courses) {
+  return request({
+    url: '/students/' + studentno + '/courses',
+    method: 'post',
+    data: courses
   })
 }
 
