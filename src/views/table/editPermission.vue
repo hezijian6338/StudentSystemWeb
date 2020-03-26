@@ -3,7 +3,7 @@
     <el-table
       v-loading="loading"
       :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-      style="width: 50%"
+      style="width: 100%"
     >
       <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
       <el-table-column label="rolename" prop="name"/>

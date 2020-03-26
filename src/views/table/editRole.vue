@@ -3,7 +3,7 @@
     <el-table
       v-loading="loading"
       :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-      style="width: 50%"
+      style="width: 100%"
     >
       <el-table-column label="UserName" prop="username"/>
       <el-table-column label="Roles">

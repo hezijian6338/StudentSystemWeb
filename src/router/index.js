@@ -78,7 +78,7 @@ export const asyncRouterMap = [
     component: Layout,
     name: 'Info',
     redirect: '/form/student',
-    meta: { title: 'Info', icon: 'form' },
+    meta: { title: 'Info', icon: 'form', roles: ['ROLE_STU'] },
     children: [
       // {
       //   path: '_index',
@@ -159,16 +159,16 @@ export const asyncRouterMap = [
   //   ]
   // },
 
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
-      }
-    ]
-  },
+  // {
+  //   path: 'external-link',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+  //       meta: { title: 'External Link', icon: 'link' }
+  //     }
+  //   ]
+  // },
 
   { path: '*', redirect: '/404', hidden: true }
 ]
