@@ -1,9 +1,12 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name:{{ name }}</div>
+    <div class="dashboard-text">{{ getRoleType }}:</div>
+    <div class="dashboard-text">{{ name }}</div>
     <div class="dashboard-text">
-      roles:
-      <span v-for="role in roles" :key="role">||{{ role }}</span>
+      你拥有的权限:
+      <div v-for="role in roles" :key="role">
+        <span>{{ getRoleName(role) }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -13,8 +16,42 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Dashboard',
+  data() {
+    return {
+      type: '学生'
+    }
+  },
   computed: {
-    ...mapGetters(['name', 'roles'])
+    ...mapGetters(['name', 'roles']),
+    getRoleType() {
+      if (this.roles.indexOf('ROLE_ALL') !== -1) {
+        return '管理员'
+      } else {
+        return '学生'
+      }
+    },
+    getRoleName() {
+      return function(role) {
+        if (role === 'ROLE_USER') {
+          return '用户权限'
+        }
+        if (role === 'ROLE_STU') {
+          return '学生权限'
+        }
+        if (role === 'ROLE_HOME') {
+          return '主页权限'
+        }
+        if (role === 'ROLE_CS') {
+          return '学生选课权限'
+        }
+        if (role === 'ROLE_COURSE') {
+          return '学生课程表'
+        }
+        if (role === 'ROLE_ALL') {
+          return '管理员权限'
+        }
+      }
+    }
   }
 }
 </script>
