@@ -8,17 +8,17 @@
         style="background-color: #f9fafc;"
       >
         <el-row :gutter="20" type="flex" justify="center">
-          <el-col :span="4">
+          <el-col :span="6">
             <el-form-item label="Your Name">
               <el-input v-model="student.stuname"/>
             </el-form-item>
           </el-col>
-          <el-col :span="6">
+          <el-col :span="7">
             <el-form-item label="Stu Number">
               <el-input v-model="student.studentno"/>
             </el-form-item>
           </el-col>
-          <el-col :span="3">
+          <el-col :span="5">
             <el-form-item label="Sex">
               <el-input v-model="student.sex"/>
             </el-form-item>
@@ -30,12 +30,12 @@
               <el-input v-model="student.orgName"/>
             </el-form-item>
           </el-col>
-          <el-col :span="5">
+          <el-col :span="7">
             <el-form-item label="Major">
               <el-input v-model="student.major"/>
             </el-form-item>
           </el-col>
-          <el-col :span="5">
+          <el-col :span="7">
             <el-form-item label="Classname">
               <el-input v-model="student.classname"/>
             </el-form-item>
@@ -50,43 +50,43 @@
     </div>
     <div>
       <el-table
-        :data="course"
+        :data="courseList"
         style="width: 100%">
         <el-table-column type="expand">
           <template slot-scope="props">
             <el-form label-position="left" inline class="demo-table-expand">
-              <el-form-item label="商品名称">
+              <el-form-item label="课程类型">
                 <span>{{ props.row.coursetype }}</span>
               </el-form-item>
-              <el-form-item label="所属店铺">
+              <el-form-item label="老师名字">
                 <span>{{ props.row.employName }}</span>
               </el-form-item>
-              <el-form-item label="商品 ID">
+              <el-form-item label="学期">
                 <span>{{ props.row.term }}</span>
               </el-form-item>
-              <el-form-item label="店铺 ID">
+              <el-form-item label="学分">
                 <span>{{ props.row.credit }}</span>
               </el-form-item>
-              <el-form-item label="商品分类">
+              <el-form-item label="总学时">
                 <span>{{ props.row.totalhours }}</span>
               </el-form-item>
-              <el-form-item label="店铺地址">
+              <el-form-item label="最终成绩">
                 <span>{{ props.row.finalscore }}</span>
               </el-form-item>
-              <el-form-item label="商品描述">
+              <el-form-item label="备注">
                 <span>{{ props.row.memo }}</span>
               </el-form-item>
             </el-form>
           </template>
         </el-table-column>
         <el-table-column
-          label="商品 ID"
-          prop="coursecond"/>
+          label="课程编号"
+          prop="coursecode"/>
         <el-table-column
-          label="商品名称"
+          label="课程名字"
           prop="coursename"/>
         <el-table-column
-          label="描述"
+          label="学年"
           prop="academicyear"/>
       </el-table>
     </div>
@@ -95,7 +95,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { studentInfo } from '@/api/student'
+import { studentInfo, courseList } from '@/api/student'
 // import store from '@/store'
 
 export default {
@@ -121,7 +121,8 @@ export default {
         totalhours: '',
         finalscore: '',
         memo: ''
-      }
+      },
+      courseList: []
     }
   },
   computed: {
@@ -136,7 +137,15 @@ export default {
         if (res.data.length === 0) {
           this.$message.error('兄dei,你的资料不存在,是不是偷渡过来的...')
         }
+        console.log(res)
         this.student = res.data
+      })
+      courseList(this.name).then(res => {
+        if (res.data.length === 0) {
+          this.$message.error('兄dei,你的资料不存在,是不是偷渡过来的...')
+        }
+        console.log(res)
+        this.courseList = res.data
       })
     }
   }

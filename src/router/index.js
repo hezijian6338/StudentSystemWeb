@@ -44,7 +44,7 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/example/table',
     name: 'Example',
-    meta: { title: '权限配置', icon: 'example' },
+    meta: { title: '权限配置', icon: 'example', roles: ['ROLE_ALL'] },
     children: [
       // {
       //   path: 'table',
@@ -69,6 +69,11 @@ export const asyncRouterMap = [
         name: 'Tree',
         component: () => import('@/views/tree/index'),
         meta: { title: '角色权限树', icon: 'tree', roles: ['ROLE_ALL'] }
+      }, {
+        path: 'addUser',
+        name: 'addUser',
+        component: () => import('@/views/admin/createUser'),
+        meta: { title: '添加用户', icon: 'tree', roles: ['ROLE_ALL'] }
       }
     ]
   },
@@ -90,7 +95,7 @@ export const asyncRouterMap = [
         path: 'student',
         name: 'student',
         component: () => import('@/views/form/student'),
-        meta: { title: 'StudentInfo', icon: 'form', roles: ['ROLE_STU'] }
+        meta: { title: '学生信息', icon: 'form', roles: ['ROLE_STU'] }
       },
       {
         path: 'selectCourses',
