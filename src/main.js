@@ -13,6 +13,9 @@ import App from './App'
 import router from './router'
 import store from './store'
 
+import './assets/iconfont.js'
+import './assets/iconfont.css'
+
 import '@/icons' // icon
 import '@/permission' // permission control
 
