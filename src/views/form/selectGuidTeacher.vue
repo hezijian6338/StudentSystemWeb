@@ -12,7 +12,7 @@
         </el-col>
         <el-col :xs="5" :sm="5" :md="5" :lg="5">
           <div class="grid-content">
-            <el-select v-model="selected" placeholder="请选择" @change="selectChange">
+            <el-select id="selectedTeacher" v-model="selected" :disabled="disabledSelect" placeholder="请选择" @change="selectChange">
               <el-option
                 v-for="teacher in guidTeachers"
                 :key="teacher.id"
@@ -81,7 +81,8 @@ export default {
       guidTeachers: [],
       guidTeacher: {},
       guidedTeacher: {},
-      selected: ''
+      selected: '',
+      disabledSelect: false
     }
   },
   computed: {
@@ -97,10 +98,17 @@ export default {
       })
       selectedGuidTeacher(this.name).then(res => {
         this.guidedTeacher = res.data
+        // eslint-disable-next-line eqeqeq,no-undef
+        if (this.guidTeacher != '' || this.guidTeacher != NULL) {
+          // document.getElementById('selectedTeacher').disabled = 'disabled'
+          alert('here ?')
+          this.disabledSelect = true
+        }
       })
     },
     selectTeacher(employNo) {
-      RequestGuideTeacher(employNo)
+      var name = this.name
+      RequestGuideTeacher(employNo, name)
     },
     reGuidTeacher(id, employno) {
       if (typeof id !== 'undefined' & id !== '' & id !== null) {
