@@ -55,6 +55,12 @@
         </el-row>
       </div>
     </div>
+    <!--This is the buttons for the test-->
+    <div class="button">
+      <svg class="icon edit" aria-hidden="true" @click="selectTeacher(guidTeacher.employNo)">
+        <use xlink:href="#icon-finish"/>
+      </svg>
+    </div>
     <div class="button">
       <svg v-if="hasPermission('STU_GUIDTEA_UPDATE')" class="icon edit" aria-hidden="true" @click="reGuidTeacher(guidedTeacher.id, guidTeacher.employNo)">
         <use xlink:href="#icon-edit"/>
@@ -67,7 +73,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import { GuidTeachersList, selectedGuidTeacher, ReGuidTeacher } from '@/api/student'
+import { GuidTeachersList, selectedGuidTeacher, ReGuidTeacher, RequestGuideTeacher } from '@/api/student'
 
 export default {
   data() {
@@ -92,6 +98,9 @@ export default {
       selectedGuidTeacher(this.name).then(res => {
         this.guidedTeacher = res.data
       })
+    },
+    selectTeacher(employNo) {
+      RequestGuideTeacher(employNo)
     },
     reGuidTeacher(id, employno) {
       if (typeof id !== 'undefined' & id !== '' & id !== null) {

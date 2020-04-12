@@ -92,3 +92,11 @@ export function ReGuidTeacher(id, employno) {
     method: 'post'
   })
 }
+
+// TODO: 学生选择导师 但是还没经过最后的确认
+export function RequestGuideTeacher(employno) {
+  return request({
+    url: '/confirm/list/unconfirm/' + employno,
+    method: 'post'
+  })
+}
