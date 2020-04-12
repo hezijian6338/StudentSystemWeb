@@ -101,7 +101,6 @@ export default {
         // eslint-disable-next-line eqeqeq,no-undef
         if (this.guidTeacher != '' || this.guidTeacher != NULL) {
           // document.getElementById('selectedTeacher').disabled = 'disabled'
-          alert('here ?')
           this.disabledSelect = true
         }
       })

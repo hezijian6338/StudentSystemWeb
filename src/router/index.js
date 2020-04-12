@@ -137,6 +137,28 @@ export const asyncRouterMap = [
     ]
   },
 
+  {
+    path: '/form',
+    component: Layout,
+    name: 'Info',
+    redirect: '/form/teaInfo',
+    meta: { title: '老师信息', icon: 'monitor', roles: ['ROLE_TEA'] },
+    children: [
+      {
+        path: 'teaInfo',
+        name: 'teaInfo',
+        component: () => import('@/views/form/teachers'),
+        meta: { title: '老师信息', icon: 'conversation' }
+      },
+      {
+        path: 'confirmStudent',
+        name: 'confirmStudent',
+        component: () => import('@/views/form/teachers'),
+        meta: { title: '导学学生', icon: 'conversation' }
+      }
+    ]
+  },
+
   // {
   //   path: '/nested',
   //   component: Layout,
