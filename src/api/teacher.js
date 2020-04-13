@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 // import qs from 'qs'
 
-// TODO: 根据学生的学号返回学生信息
+// TODO: 根据老师的工号返回老师信息
 export function teacherInfo(teacherEmployno) {
   return request({
     url: '/teacher/info/teaInfo/' + teacherEmployno,
@@ -9,3 +9,18 @@ export function teacherInfo(teacherEmployno) {
   })
 }
 
+// TODO: 根据老师的工号返回选该位老师做导师的学生的信息
+export function displayStudent(teacherEmployno) {
+  return request({
+    url: '/confirm/list/disStu/' + teacherEmployno,
+    method: 'get'
+  })
+}
+
+// TODO: 根据学号和老师的工号提交请到服务
+export function confirmStudent(stuNo, teacherEmployno) {
+  return request({
+    url: '/confirm/list/confStu/' + stuNo + '/' + teacherEmployno,
+    method: 'post'
+  })
+}

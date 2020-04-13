@@ -153,7 +153,7 @@ export const asyncRouterMap = [
       {
         path: 'confirmStudent',
         name: 'confirmStudent',
-        component: () => import('@/views/form/teachers'),
+        component: () => import('@/views/form/confirmStudent'),
         meta: { title: '导学学生', icon: 'conversation' }
       }
     ]
