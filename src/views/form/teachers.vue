@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="main">
     <div>
       <el-form
         ref="teachers"
@@ -9,68 +9,74 @@
       >
         <el-row :gutter="25" type="flex" justify="center">
           <el-col :span="8">
-            <el-form-item label="employNo">
+            <el-form-item label="employNo" disabled="true">
               <el-input v-model="teachers.employNo"/>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="employName">
+            <el-form-item label="employName" disabled="true">
               <el-input v-model="teachers.employName"/>
             </el-form-item>
           </el-col>
           <el-col :span="5">
-            <el-form-item label="Sex">
+            <el-form-item label="Sex" disabled="true">
               <el-input v-model="teachers.sex"/>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="25" type="flex" justify="center">
           <el-col :span="5">
-            <el-form-item label="birthday">
-              <el-input v-model="teachers.birthday"/>
+            <el-form-item label="telno">
+              <el-input id="teachertelno" v-model="teachers.telno"/>
             </el-form-item>
           </el-col>
           <el-col :span="9">
-            <el-form-item label="orgId">
-              <el-input v-model="teachers.introduce"/>
+            <el-form-item label="Introduce">
+              <el-input id="teacherIntroduce" v-model="teachers.introduce"/>
             </el-form-item>
           </el-col>
           <el-col :span="7">
             <el-form-item label="orgName">
-              <el-input v-model="teachers.orgName"/>
+              <el-input id="teacherorgName" v-model="teachers.orgName"/>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="25" type="flex" justify="center">
           <el-col :span="5">
             <el-form-item label="department">
-              <el-input v-model="teachers.department"/>
+              <el-input id="teacherdepartment" v-model="teachers.department"/>
             </el-form-item>
           </el-col>
           <el-col :span="5">
             <el-form-item label="email">
-              <el-input v-model="teachers.email"/>
+              <el-input id="teacheremail" v-model="teachers.email"/>
             </el-form-item>
           </el-col>
           <el-col :span="5">
             <el-form-item label="address">
-              <el-input v-model="teachers.address"/>
+              <el-input id="teacheraddress" v-model="teachers.address"/>
             </el-form-item>
           </el-col>
           <el-col :span="5">
-            <el-form-item label="telno">
-              <el-input v-model="teachers.telno"/>
+            <el-form-item label="acdemictitle">
+              <el-input id="teacheracdemictitle" v-model="teachers.acdemictitle"/>
             </el-form-item>
           </el-col>
         </el-row>
       </el-form>
+    </div>
+    <!--This is the buttons for the test-->
+    <div class="button">
+      <svg class="icon edit" aria-hidden="true" @click="updateData()">
+        <use xlink:href="#icon-finish"/>
+      </svg>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import { teacherInfo } from '@/api/teacher'
+import { teacherInfo, updateData } from '@/api/teacher'
 // import store from '@/store'
 
 export default {
@@ -86,7 +92,8 @@ export default {
         department: '',
         telno: '',
         email: '',
-        address: ''
+        address: '',
+        acdemictitle: ''
       }
     }
   },
@@ -104,6 +111,11 @@ export default {
         }
         this.teachers = res.data
       })
+    },
+    updateData() {
+      var co = this.teachers
+      // alert(this.teachers)
+      updateData(co)
     }
   }
 }
