@@ -78,6 +78,7 @@
 import { mapGetters } from 'vuex'
 import { teacherInfo, updateData } from '@/api/teacher'
 // import store from '@/store'
+// For the version control
 
 export default {
   data() {
