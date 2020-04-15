@@ -2,10 +2,10 @@
   <div>
     <el-main>
       <el-table :data="selecteStudents" border height="680px" style="width: 100%">
-        <el-table-column label="学生学号" width="100" prop="studentno"/>
-        <el-table-column label="学生名字" width="100" prop="stuname"/>
-        <el-table-column label="班级" width="100" prop="classname"/>
-        <el-table-column label="电话" width="100" prop="mobileno"/>
+        <el-table-column label="学生学号" style="width: 25%" prop="studentno"/>
+        <el-table-column label="学生名字" style="width: 25%" prop="stuname"/>
+        <el-table-column label="班级" style="width: 25%" prop="classname"/>
+        <el-table-column label="电话" style="width: 25%" prop="mobileno"/>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button @click="selected(scope.$index)">确认</el-button>

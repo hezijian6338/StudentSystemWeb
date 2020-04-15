@@ -17,12 +17,12 @@ export function displayStudent(teacherEmployno) {
   })
 }
 
-// TODO: 根据学号和老师的工号提交请到服务
+// TODO: 更新导师的部分信息
 export function updateData(co) {
   return request({
     url: '/teacher/info/updateData/',
-    parameter: co,
-    method: 'put'
+    method: 'post',
+    data: co
   })
 }
 
