@@ -12,7 +12,8 @@
           </template>
         </el-table-column>
       </el-table>
-  </el-main></div>
+    </el-main>
+  </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'

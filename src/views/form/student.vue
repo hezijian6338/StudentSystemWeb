@@ -1,59 +1,68 @@
 <template>
   <div class="app-container">
-    <div>
-      <el-form
-        ref="student"
-        :model="student"
-        label-width="120px"
-        style="background-color: #f9fafc;"
-      >
-        <el-row :gutter="20" type="flex" justify="center">
-          <el-col :span="5">
-            <el-form-item label="Your Name">
-              <el-input v-model="student.stuname"/>
-            </el-form-item>
-          </el-col>
-          <el-col :span="6">
-            <el-form-item label="Stu Number">
-              <el-input v-model="student.studentno"/>
-            </el-form-item>
-          </el-col>
-          <el-col :span="5">
-            <el-form-item label="Sex">
-              <el-input v-model="student.sex"/>
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20">
-          <el-col :span="6">
-            <el-form-item label="ORG Name">
-              <el-input v-model="student.orgName" disabled/>
-            </el-form-item>
-          </el-col>
-          <el-col :span="7">
-            <el-form-item label="Major">
-              <el-input v-model="student.major"/>
-            </el-form-item>
-          </el-col>
-          <el-col :span="8">
-            <el-form-item label="Classname">
-              <el-input v-model="student.classname"/>
-            </el-form-item>
-          </el-col>
-          <el-col :span="5">
-            <el-form-item label="Grade">
-              <el-input v-model="student.grade"/>
-            </el-form-item>
-          </el-col>
-        </el-row>
-      </el-form>
-    </div>
+    <center>
+      <div>
+        <el-form
+          ref="student"
+          :model="student"
+          label-width="120px"
+          style="background-color: #f9fafc;"
+        >
+          <el-row :gutter="20" type="flex" justify="center">
+            <el-col :span="5">
+              <el-form-item label="Your Name">
+                <el-input v-model="student.stuname"/>
+              </el-form-item>
+            </el-col>
+            <el-col :span="6">
+              <el-form-item label="Stu Number">
+                <el-input v-model="student.studentno"/>
+              </el-form-item>
+            </el-col>
+            <el-col :span="5">
+              <el-form-item label="Sex">
+                <el-input v-model="student.sex"/>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row :gutter="20">
+            <el-col :span="6">
+              <el-form-item label="ORG Name">
+                <el-input v-model="student.orgName" disabled/>
+              </el-form-item>
+            </el-col>
+            <el-col :span="7">
+              <el-form-item label="Major">
+                <el-input v-model="student.major"/>
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="Classname">
+                <el-input v-model="student.classname"/>
+              </el-form-item>
+            </el-col>
+            <el-col :span="5">
+              <el-form-item label="Grade">
+                <el-input v-model="student.grade"/>
+              </el-form-item>
+            </el-col>
+          </el-row>
+        </el-form>
+      </div>
+    </center>
+    <center>
+      <div class="button">
+        <svg class="icon edit" aria-hidden="true" @click="updateData()">
+          <use xlink:href="#icon-finish"/>
+        </svg>
+      </div>
+    </center>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import { studentInfo } from '@/api/student'
+import { studentInfo, upStuData } from '@/api/student'
 // import store from '@/store'
 
 export default {
@@ -96,6 +105,12 @@ export default {
         }
         this.student = res.data
       })
+    },
+    updateData() {
+      var co = this.student
+      upStuData(co).then(
+        location.reload()
+      )
     }
   }
 }

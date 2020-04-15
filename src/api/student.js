@@ -63,7 +63,7 @@ export function selectedCourseIds(studentno) {
 // TODO: 已选课程(根据学生的学号查询)
 export function selectedCourses(studentno) {
   return request({
-    url: '/course/info/student/' + studentno,
+    url: '/course/info/student/detail/' + studentno,
     method: 'get'
   })
 }
@@ -100,3 +100,13 @@ export function RequestGuideTeacher(employno, name) {
     method: 'post'
   })
 }
+
+// TODO: 更新学生某些信息
+export function upStuData(co) {
+  return request({
+    url: '/students/updateStu',
+    method: 'post',
+    data: co
+  })
+}
+

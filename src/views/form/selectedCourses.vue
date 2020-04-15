@@ -67,16 +67,17 @@ export default {
   },
   methods: {
     loadData() {
-      if (this.hasPermission('STU_COURSE_CHECK')) {
-        selectedCourses(this.name).then(res => {
-          this.courses = res.data
-        })
-      } else {
-        this.$message({
-          message: '你没有查看的权限!!',
-          type: 'warning'
-        })
-      }
+      // if (this.hasPermission('STU_COURSE_CHECK')) {
+      selectedCourses(this.name).then(res => {
+        this.courses = res.data
+      })
+      // })
+      // } else {
+      //   this.$message({
+      //     message: '你没有查看的权限!!',
+      //     type: 'warning'
+      //   })
+      // }
     },
     hasPermission(route) {
       return this.roles.some(role => role.includes(route))

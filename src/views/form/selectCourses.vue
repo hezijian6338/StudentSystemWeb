@@ -1,5 +1,16 @@
 <template>
   <div>
+    <div>
+      <h1>已选的课</h1>
+      <el-main>
+        <el-table :data="selectedCoursesInfo" border height="680px" style="width: 100%; height: 30%">
+          <el-table-column label="学科名字" style="width: 25%" prop="coursename"/>
+          <el-table-column label="课程类型" style="width: 25%" prop="coursetype"/>
+          <el-table-column label="学分" style="width: 25%" prop="credit"/>
+          <el-table-column label="任课老师" style="width: 25%" prop="employName"/>
+        </el-table>
+      </el-main>
+    </div>
     <h1>基础课程:</h1>
     <el-checkbox-group v-model="courseids">
       <div v-for="course in courses" :key="course.id" style="padding:0 20px;text-align: justify;display: inline-block;width:200px;" >
@@ -14,11 +25,14 @@
     </el-checkbox-group>
     <!-- {{ courseids }} -->
     <div class="button">
-      <svg v-if="hasPermission('STU_COURSE_UPDATE')" class="icon edit" aria-hidden="true" @click="saveData">
+      <!--      <svg v-if="hasPermission('STU_COURSE_UPDATE')" class="icon edit" aria-hidden="true" @click="saveData">-->
+      <!--        <use xlink:href="#icon-edit"/>-->
+      <!--      </svg>-->
+      <!--      <svg v-if="hasPermission('STU_COURSE_SAVE')" class="icon finish" aria-hidden="true" @click="saveData">-->
+      <!--        <use xlink:href="#icon-finish"/>-->
+      <!--      </svg>-->
+      <svg v-if="hasPermission('STU_COURSE_SAVE')" class="icon edit" aria-hidden="true" @click="saveData">
         <use xlink:href="#icon-edit"/>
-      </svg>
-      <svg v-if="hasPermission('STU_COURSE_SAVE')" class="icon finish" aria-hidden="true" @click="saveData">
-        <use xlink:href="#icon-finish"/>
       </svg>
     </div>
   </div>
@@ -26,7 +40,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { courseList, selectCourses2, selectedCourseIds } from '@/api/student'
+import { courseList, selectCourses2, selectedCourseIds, selectedCourses } from '@/api/student'
 
 export default {
   data() {
@@ -34,7 +48,8 @@ export default {
       courses: [],
       courseids: [],
       c: {},
-      checklist: []
+      checklist: [],
+      selectedCoursesInfo: []
       // checkList2: []
     }
   },
@@ -59,6 +74,9 @@ export default {
       selectedCourseIds(this.name).then(res => {
         this.courseids = res.data
       })
+      selectedCourses(this.name).then(res => {
+        this.selectedCoursesInfo = res.data
+      })
     },
     saveData() {
       // course(this.checkList2[0]).then(res => {
@@ -76,6 +94,7 @@ export default {
           message: '成功添加',
           type: 'success'
         })
+        location.reload()
       })
     }
   }
