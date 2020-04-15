@@ -8,42 +8,69 @@
           label-width="120px"
           style="background-color: #f9fafc;"
         >
-          <el-row :gutter="20" type="flex" justify="center">
-            <el-col :span="5">
+          <el-row :gutter="20" type="flex" justify="center" style="width: 100%">
+            <el-col style="width: 20%;">
               <el-form-item label="Your Name">
-                <el-input v-model="student.stuname"/>
+                <el-input v-model="student.stuname" disabled="disabled"/>
               </el-form-item>
             </el-col>
-            <el-col :span="6">
+            <el-col style="width: 30%;">
               <el-form-item label="Stu Number">
-                <el-input v-model="student.studentno"/>
+                <el-input v-model="student.studentno" disabled="disabled"/>
               </el-form-item>
             </el-col>
-            <el-col :span="5">
+            <el-col style="width: 15%;">
               <el-form-item label="Sex">
                 <el-input v-model="student.sex"/>
               </el-form-item>
             </el-col>
+            <el-col style="width: 30%;">
+              <el-form-item label="身份证">
+                <el-input v-model="student.idcardno"/>
+              </el-form-item>
+            </el-col>
           </el-row>
           <el-row :gutter="20">
-            <el-col :span="6">
+            <el-col style="width: 20%;">
               <el-form-item label="ORG Name">
                 <el-input v-model="student.orgName" disabled/>
               </el-form-item>
             </el-col>
-            <el-col :span="7">
+            <el-col style="width: 20%;">
               <el-form-item label="Major">
-                <el-input v-model="student.major"/>
+                <el-input v-model="student.major" disabled="disabled"/>
               </el-form-item>
             </el-col>
-            <el-col :span="8">
+            <el-col style="width: 20%;">
               <el-form-item label="Classname">
-                <el-input v-model="student.classname"/>
+                <el-input v-model="student.classname" disabled="disabled"/>
               </el-form-item>
             </el-col>
-            <el-col :span="5">
+            <el-col style="width: 20%;">
               <el-form-item label="Grade">
-                <el-input v-model="student.grade"/>
+                <el-input v-model="student.grade" disabled="disabled"/>
+              </el-form-item>
+            </el-col>
+            <el-col style="width: 20%;">
+              <el-form-item label="familytelno">
+                <el-input v-model="student.familytelno" />
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col style="width: 25%;">
+              <el-form-item label="mobileno">
+                <el-input v-model="student.mobileno" />
+              </el-form-item>
+            </el-col>
+            <el-col style="width: 35%;">
+              <el-form-item label="address">
+                <el-input v-model="student.address" />
+              </el-form-item>
+            </el-col>
+            <el-col style="width: 35%;">
+              <el-form-item label="nativeplace">
+                <el-input v-model="student.nativeplace" />
               </el-form-item>
             </el-col>
           </el-row>
@@ -75,7 +102,12 @@ export default {
         sex: '',
         major: '',
         classname: '',
-        grade: ''
+        grade: '',
+        idcardno: '',
+        familytelno: '',
+        mobileno: '',
+        address: '',
+        nativeplace: ''
       },
       course: {
         coursecode: '',
