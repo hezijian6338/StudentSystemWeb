@@ -142,7 +142,7 @@ export const asyncRouterMap = [
     component: Layout,
     name: 'Info',
     redirect: '/form/teaInfo',
-    meta: { title: '老师信息', icon: 'monitor', roles: ['ROLE_TEA'] },
+    meta: { title: '老师功能', icon: 'monitor', roles: ['ROLE_TEA'] },
     children: [
       {
         path: 'teaInfo',
@@ -155,6 +155,12 @@ export const asyncRouterMap = [
         name: 'confirmStudent',
         component: () => import('@/views/form/confirmStudent'),
         meta: { title: '导学学生', icon: 'conversation' }
+      },
+      {
+        path: 'coureInfo',
+        name: 'courseInfo',
+        component: () => import('@/views/form/teaCourseInfo'),
+        meta: { title: '课程信息', icon: 'conversation' }
       }
     ]
   },

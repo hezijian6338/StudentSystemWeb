@@ -9,6 +9,14 @@ export function teacherInfo(teacherEmployno) {
   })
 }
 
+// TODO: 根据老师的工号来获取可选课程的信息
+export function teaCourseList(teacherNo) {
+  return request({
+    url: '/teacher/info/course/' + teacherNo,
+    method: 'get'
+  })
+}
+
 // TODO: 根据老师的工号返回选该位老师做导师的学生的信息
 export function displayStudent(teacherEmployno) {
   return request({
@@ -33,3 +41,5 @@ export function confirmStudent(stuNo, teacherEmployno) {
     method: 'post'
   })
 }
+
+
