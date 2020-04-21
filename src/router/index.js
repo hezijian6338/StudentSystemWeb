@@ -167,6 +167,12 @@ export const asyncRouterMap = [
         name: 'courseInfo',
         component: () => import('@/views/form/teaCourseInfo'),
         meta: { title: '课程信息', icon: 'conversation' }
+      },
+      {
+        path: 'selectedStudents',
+        name: 'selectedStudents',
+        component: () => import('@/views/form/selectedStudents'),
+        meta: { title: '已选学生', icon: 'conversation' }
       }
     ]
   },

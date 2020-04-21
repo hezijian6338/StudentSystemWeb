@@ -57,3 +57,10 @@ export function displayCourses() {
   })
 }
 
+// TODO: 根据老师的工号返回导学学生的信息
+export function selectedStudents(teacherEmployno) {
+  return request({
+    url: '/learningguid/studentslist/selected/' + teacherEmployno,
+    method: 'get'
+  })
+}
