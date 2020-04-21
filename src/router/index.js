@@ -87,6 +87,12 @@ export const asyncRouterMap = [
         name: 'AddUsers',
         component: () => import('@/views/table/addUsers'),
         meta: { title: '批量添加用户', icon: 'setup' }
+      },
+      {
+        path: 'addCourses',
+        name: 'addCourses',
+        component: () => import('@/views/form/addCourse'),
+        meta: { title: '添加课程', icon: 'setup' }
       }
     ]
   },

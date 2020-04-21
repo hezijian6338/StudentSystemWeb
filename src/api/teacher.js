@@ -42,4 +42,18 @@ export function confirmStudent(stuNo, teacherEmployno) {
   })
 }
 
+export function submitCouses(co) {
+  return request({
+    url: '/course/info/',
+    method: 'post',
+    data: co
+  })
+}
+
+export function displayCourses() {
+  return request({
+    url: '/course/info/',
+    method: 'get'
+  })
+}
 
