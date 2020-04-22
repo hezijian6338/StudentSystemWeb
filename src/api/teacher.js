@@ -64,3 +64,19 @@ export function selectedStudents(teacherEmployno) {
     method: 'get'
   })
 }
+
+// TODO: 根据老师的工号和课程的编号返回导学学生的信息
+export function infoStu(corseNo, teacherno) {
+  return request({
+    url: '/course/info/student/detail/' + corseNo + '/' + teacherno,
+    method: 'get'
+  })
+}
+
+export function updateScore(co) {
+  return request({
+    url: '/course/info/student/',
+    method: 'put',
+    data: co
+  })
+}

@@ -173,6 +173,11 @@ export const asyncRouterMap = [
         name: 'selectedStudents',
         component: () => import('@/views/form/selectedStudents'),
         meta: { title: '已选学生', icon: 'conversation' }
+      },
+      { path: '/form/infoScore',
+        component: () => import('@/views/form/infoScore'),
+        meta: { title: '登入分数', icon: 'conversation' },
+        hidden: true
       }
     ]
   },

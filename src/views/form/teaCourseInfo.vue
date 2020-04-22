@@ -8,6 +8,11 @@
           <el-table-column label="课程类型" style="width: 25%" prop="coursetype"/>
           <el-table-column label="学分" style="width: 25%" prop="credit"/>
           <el-table-column label="人数" style="width: 25%" prop="studentnum"/>
+          <el-table-column label="操作">
+            <template slot-scope="scope">
+              <el-button @click="selected(scope.$index)">登分</el-button>
+            </template>
+          </el-table-column>
         </el-table>
       </el-main>
     </div>
@@ -37,6 +42,14 @@ export default {
         this.coursesInfo = res.data
         console.log(res.data)
       })
+    },
+    selected(index) {
+      // 跳转去某个页面
+      this.$router.push({ path: '/form/infoScore/',
+        query: {
+          index: this.coursesInfo[index].selectedcourseno
+        }})
+      // 传送参数 然后infoScore接送
     }
   }
 }
