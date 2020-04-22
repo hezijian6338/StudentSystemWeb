@@ -25,12 +25,12 @@ export function getInfo(token) {
 }
 
 // TODO: 登出(没在使用)
-// export function logout() {
-//   return request({
-//     url: '/user/logout',
-//     method: 'post'
-//   })
-// }
+export function logoutUser() {
+  return request({
+    url: '/user/logout',
+    method: 'post'
+  })
+}
 
 // TODO: 注册用户(单个)
 // export function addUser(User) {
