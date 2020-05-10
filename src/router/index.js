@@ -46,12 +46,6 @@ export const asyncRouterMap = [
     name: 'Example',
     meta: { title: '角色权限控制', icon: 'manger', roles: ['ROLE_ALL'] },
     children: [
-      // {
-      //   path: 'table',
-      //   name: 'Table',
-      //   component: () => import('@/views/table/index'),
-      //   meta: { title: 'Table', icon: 'table' }
-      // },
       {
         path: 'editRole',
         name: 'EditRole',
@@ -139,6 +133,22 @@ export const asyncRouterMap = [
         name: 'selectedGuidTeacher',
         component: () => import('@/views/form/selectedGuidTeacher'),
         meta: { title: '导学老师', icon: 'conversation' }
+      }
+    ]
+  },
+
+  {
+    path: '/user/info',
+    component: Layout,
+    name: 'userInfo',
+    redirect: '/user/info/password/modification',
+    meta: { title: '用户信息', icon: 'monitor', roles: ['ROLE_STU'] },
+    children: [
+      {
+        path: 'password/modification',
+        name: 'password',
+        component: () => import('@/views/form/passwordModify'),
+        meta: { title: '修改密码', icon: 'conversation' }
       }
     ]
   },

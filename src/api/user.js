@@ -14,3 +14,17 @@ export function deleteUser(id) {
     method: 'delete'
   })
 }
+
+export function modifyPassowrd(id, oldPassword, newPassword) {
+  return request({
+    url: '/user/' + id + '/password/' + oldPassword + '/modification/' + newPassword,
+    method: 'post'
+  })
+}
+
+export function findUserByName(userName) {
+  return request({
+    url: '/user/name/' + userName,
+    method: 'get'
+  })
+}
