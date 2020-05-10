@@ -7,3 +7,10 @@ export function createUser(number) {
     method: 'post'
   })
 }
+
+export function deleteUser(id) {
+  return request({
+    url: '/user/' + id,
+    method: 'delete'
+  })
+}

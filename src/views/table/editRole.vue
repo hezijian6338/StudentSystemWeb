@@ -1,11 +1,15 @@
 <template>
   <div class="app-container">
+    <el-input
+      v-model="search"
+      size="mini"
+      placeholder="输入关键字搜索"/>
     <el-table
       v-loading="loading"
-      :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-      style="width: 80%"
+      :data="tableData.filter(data => !search || data.username.toLowerCase().includes(search.toLowerCase()))"
+      style="width: 100%"
     >
-      <el-table-column label="UserName" prop="username"/>
+      <el-table-column width="300px" label="UserName" prop="username"/>
       <el-table-column label="Roles" width="300px">
         <template slot-scope="scope">
           <el-select
@@ -27,13 +31,16 @@
           </el-select>
         </template>
       </el-table-column>
-      <el-table-column align="right">
-        <template slot="header" slot-scope="scope">
-          <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
+      <el-table-column align="right" >
+        <template slot="header" slot-scope="scope1">
+          <!-- <el-input
+            v-model="search"
+            size="mini"
+            placeholder="输入关键字搜索"/> -->
         </template>
         <template slot-scope="scope">
           <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">Confirm</el-button>
-          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row.roles)">Delete</el-button>
+          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -42,6 +49,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { editRole } from '@/api/roles'
+import { deleteUser } from '@/api/user'
 
 export default {
   data() {
@@ -90,10 +98,10 @@ export default {
     },
     handleEdit(index, row) {
       this.loading = true
-      console.log(this.tableData[index].roles)
+      // console.log(this.tableData[index].roles)
       var _this = this.backData
       _this = this.tableData[index]
-      console.log('准备要发送的信息:' + _this.id)
+      // console.log('准备要发送的信息:' + _this.id)
       JSON.stringify(_this)
       editRole(_this).then(response => {
         this.loading = false
@@ -109,7 +117,20 @@ export default {
       })
     },
     handleDelete(index, row) {
-      console.log(index, row)
+      // console.log(index, row)
+      const user = Object.assign({}, row)
+      console.log(user)
+      deleteUser(user.id).then(res => {
+        if (res.code === 200) {
+          this.$message({
+            message: '删除成功~',
+            type: 'success'
+          })
+          this.loadData()
+        } else {
+          this.$message.error('删除错误,请联系管理员...')
+        }
+      })
     },
     loadData() {
       this.$store

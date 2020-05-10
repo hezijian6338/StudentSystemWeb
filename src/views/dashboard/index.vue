@@ -74,7 +74,7 @@
 import { mapGetters } from 'vuex'
 // import { findUser } from '@/api/login'
 import { studentsOfUser, selectedCourses } from '@/api/student'
-import role from '../../store/modules/role'
+// import role from '../../store/modules/role'
 
 export default {
   name: 'Dashboard',
