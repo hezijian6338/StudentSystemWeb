@@ -1,8 +1,16 @@
 <template>
   <div>
     <div>
+      <el-input
+        v-model="searchName"
+        size="mini"
+        placeholder="输入课程代码/课程名称 关键字搜索"/>
+      <!-- <el-input
+        v-model="searchCode"
+        size="mini"
+        placeholder="输入课程代码关键字搜索"/> -->
       <el-main>
-        <el-table :data="existsCourse" border height="680px" style="width: 100%">
+        <el-table :data="existsCourse.filter(data => !searchName || data.coursename.toLowerCase().includes(searchName.toLowerCase()) || data.coursecode.toLowerCase().includes(searchName.toLowerCase()))" border height="680px" style="width: 100%">
           <el-table-column label="课程代码" style="width: 25%" prop="coursecode"/>
           <el-table-column label="课程名称" style="width: 25%" prop="coursename"/>
           <el-table-column label="教师姓名" style="width: 25%" prop="employName"/>
@@ -130,6 +138,10 @@ import { GuidTeachersList } from '@/api/student'
 export default {
   data() {
     return {
+      searchName: '',
+      searchCode: '',
+      selected: '',
+      disabledSelect: false,
       courses: {
         coursecode: '',
         coursename: '',
