@@ -194,7 +194,7 @@ export default {
       } else if (!co.credit) {
         alert('Course Credit Cannot be null!')
       } else {
-        alert('here???')
+        // alert('here???')
         submitCouses(co).then(
           location.reload()
         )
