@@ -142,7 +142,7 @@ export const asyncRouterMap = [
     component: Layout,
     name: 'userInfo',
     redirect: '/user/info/password/modification',
-    meta: { title: '用户信息', icon: 'monitor', roles: ['ROLE_STU'] },
+    meta: { title: '用户信息', icon: 'monitor', roles: ['ROLE_STU', 'ROLE_TEA'] },
     children: [
       {
         path: 'password/modification',
