@@ -184,13 +184,15 @@ export const asyncRouterMap = [
         component: () => import('@/views/form/selectedStudents'),
         meta: { title: '已选学生', icon: 'conversation' }
       },
-      { path: '/form/infoScore',
+      {
+        path: '/form/infoScore',
         component: () => import('@/views/form/infoScore'),
         meta: { title: '登入分数', icon: 'conversation' },
         hidden: true
       }
     ]
-  }
+  },
+  // }
 
   // {
   //   path: '/nested',
@@ -260,8 +262,7 @@ export const asyncRouterMap = [
   //     }
   //   ]
   // },
-
-  // { path: '*', redirect: '/404', hidden: true }
+  { path: '*', redirect: '/404', hidden: true }
 ]
 
 export default new Router({
