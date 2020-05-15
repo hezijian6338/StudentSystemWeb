@@ -99,7 +99,9 @@ export default {
       selectedGuidTeacher(this.name).then(res => {
         this.guidedTeacher = res.data
         // eslint-disable-next-line eqeqeq,no-undef
-        if (this.guidTeacher != '' || this.guidTeacher != NULL) {
+        // console.log(this.guidedTeacher.teachername.length)
+        if (this.guidedTeacher.teachername.length > 0) {
+          console.log(this.guidedTeacher.teachername)
           document.getElementById('selectedTeacher').disabled = 'disabled'
           this.disabledSelect = true
         }
